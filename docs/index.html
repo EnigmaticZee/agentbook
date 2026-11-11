@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentbook: your project, remembered</title>
+<meta name="description" content="One private repo holds your code and its handbook: every decision, question and session. Any coding agent, on any computer, picks up exactly where you left off.">
+<meta property="og:title" content="Agentbook: your project, remembered">
+<meta property="og:description" content="A handbook any coding agent can pick up, on any computer. Open source, MIT.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F1F1F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1024" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Theme before paint: saved choice, else the system's.
+  try { var t = localStorage.getItem("ab-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  document.documentElement.classList.add("js");
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Agentbook home">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-mark"/></svg>
+    <span>Agentbook</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="#how">How it works</a>
+    <a href="#cli">CLI</a>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#install">Install</a>
+  </nav>
+  <div class="nav-end">
+    <button class="theme" id="theme" type="button" aria-label="Switch light or dark theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+    </button>
+    <a class="btn btn-dark btn-sm" href="https://github.com/EnigmaticZee/agentbook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-gh"/></svg><span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="chip"><span class="dot"></span> Open source · works with any coding agent</p>
+      <h1>Your project,<br><em class="swash">remembered<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 70 4, 140 22, 200 11 S 280 8, 296 14"/></svg></em>.</h1>
+      <p class="lede">One private repo holds your code <i>and</i> its handbook: every decision, every question you asked, every session. Open it in any coding agent, on any computer, and it picks up exactly where you left off.</p>
+      <div class="cta">
+        <a class="btn btn-dark" href="#install">Get started <span class="btn-ico" aria-hidden="true">↓</span></a>
+        <a class="btn btn-light" href="#how">How it works</a>
+      </div>
+      <p class="aside"><svg viewBox="0 0 40 30" aria-hidden="true"><path d="M4 4 C 6 18, 18 24, 34 22 M28 16 l6 6 -7 4"/></svg> You never run a script. Your agent does.</p>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="strings">
+        <div class="hang h1"><span class="tag">Claude Code</span></div>
+        <div class="hang h2"><span class="tag">Codex</span></div>
+        <div class="hang h3"><span class="tag">Cursor</span></div>
+        <div class="hang h4"><span class="tag">Gemini CLI</span></div>
+        <div class="hang h5"><span class="tag">Copilot</span></div>
+      </div>
+      <div class="book">
+        <div class="page left">
+          <b>STATUS</b>
+          <i></i><i></i><i class="s"></i>
+          <b>NEXT STEP</b>
+          <i></i><i class="s"></i>
+        </div>
+        <div class="page right">
+          <b>DECISIONS</b>
+          <span class="entry"><em>2026-11-08</em> SQLite, not Postgres</span>
+          <span class="entry"><em>2026-11-09</em> Ship the CLI first</span>
+          <span class="entry pulse"><em>today</em> Rename to Agentbook</span>
+        </div>
+        <div class="spine"></div>
+      </div>
+      <span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">●</span>
+    </div>
+  </div>
+</section>
+
+<section class="idea" id="how">
+  <div class="wrap">
+    <p class="eyebrow">The idea</p>
+    <h2>Notes your agent <em>actually</em> keeps.</h2>
+    <p class="sub">Coding agents forget everything between sessions. Agentbook gives every project a handbook that lives right beside the code, plus rules that make the agent read it first and update it as it works.</p>
+
+    <div class="diagram" data-reveal>
+      <div class="repo private">
+        <div class="repo-head"><span class="lock">●</span> my-app <small>private repo · what you clone</small></div>
+        <ul class="files">
+          <li><b>AGENTS.md</b><span>rules every agent reads first</span></li>
+          <li><b>STATUS.md</b><span>where things stand, the exact next step</span></li>
+          <li><b>DECISIONS.md</b><span>every decision, why, and what lost</span></li>
+          <li><b>history/sessions/</b><span>every question and answer, per day</span></li>
+          <li><b>kit/</b><span>sync, check, find, hooks</span></li>
+          <li class="code"><b>code/</b><span>your code</span></li>
+        </ul>
+      </div>
+      <div class="arrow"><span>when you go public</span><svg viewBox="0 0 120 24" aria-hidden="true"><path d="M2 12 H110 M100 4 l10 8 -10 8"/></svg></div>
+      <div class="repo public">
+        <div class="repo-head"><span class="globe">●</span> my-app <small>public repo · code only</small></div>
+        <ul class="files">
+          <li class="code"><b>src/ · README · LICENSE</b><span>only the code's own commits</span></li>
+          <li class="ghost"><b>no notes</b><span>your handbook never leaves</span></li>
+        </ul>
+        <p class="note">The handbook stays private as <code>my-app-handbook</code> and fetches the public code into <code>code/</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routine">
+  <div class="wrap">
+    <p class="eyebrow">The routine</p>
+    <h2>Four things. <em>That's it.</em></h2>
+    <ol class="steps">
+      <li class="card" data-reveal><span class="n">1</span><h3>Open</h3><p>Open the project folder in your agent. New computer? Clone your private repo first.</p></li>
+      <li class="card" data-reveal><span class="n">2</span><h3>Work</h3><p>Say what you want. Ask anything about the past: <q>did we look into…?</q></p></li>
+      <li class="card" data-reveal><span class="n">3</span><h3>Save</h3><p>Say <q>commit and push</q>. The handbook travels with the code.</p></li>
+      <li class="card" data-reveal><span class="n">4</span><h3>Stop</h3><p>Say <q>wrap up</q>. Even talk-only sessions reach your next computer.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cli" id="cli">
+  <div class="wrap">
+    <p class="eyebrow">The CLI</p>
+    <h2>For the moments that are <em>yours</em>.</h2>
+    <p class="sub">Your agent runs the kit for you. The <code>agentbook</code> command is for the human bits: starting a project, seeing where things stand, searching the past, and checking it's all saved.</p>
+
+    <div class="term-tabs" role="tablist" aria-label="CLI demos">
+      <button role="tab" aria-selected="true" data-demo="home">agentbook</button>
+      <button role="tab" aria-selected="false" data-demo="find">find</button>
+      <button role="tab" aria-selected="false" data-demo="check">check</button>
+      <button role="tab" aria-selected="false" data-demo="init">init</button>
+    </div>
+    <div class="term" data-reveal>
+      <div class="term-bar"><i></i><i></i><i></i><span>~/code/lumen</span></div>
+      <pre class="term-body" id="term" aria-live="off"></pre>
+    </div>
+    <p class="caption">Light and dark terminals, keyboard first, instant start. <span class="kbd">↑</span><span class="kbd">↓</span> to move, <span class="kbd">enter</span> to run.</p>
+  </div>
+</section>
+
+<section class="auto">
+  <div class="wrap">
+    <p class="eyebrow">What happens on its own</p>
+    <h2>Guard rails, <em>not homework</em>.</h2>
+    <div class="grid">
+      <article class="feat" data-reveal><div class="art a-sync" aria-hidden="true"><span>↻</span></div><h3>Every session starts in sync</h3><p>The agent's first step fetches the code and handbook, installs what it can and connects the hooks. Even on a brand-new computer.</p></article>
+      <article class="feat" data-reveal><div class="art a-log" aria-hidden="true"><span>a1f3</span><span>9c2e</span><span>77b0</span></div><h3>Every commit is logged</h3><p>Each code commit lands in the handbook's commit log automatically, so history and reasons stay side by side.</p></article>
+      <article class="feat" data-reveal><div class="art a-stop" aria-hidden="true"><span>push</span></div><h3>Stale notes block the push</h3><p>No session log today, handbook older than the code, or failing tests? The push stops and says why.</p></article>
+      <article class="feat" data-reveal><div class="art a-split" aria-hidden="true"><span>code</span><span>notes</span></div><h3>Code and notes never mix</h3><p>In a one-repo project, a commit can't touch both, so the code's history can go public cleanly at any time.</p></article>
+      <article class="feat" data-reveal><div class="art a-find" aria-hidden="true"><span>⌕</span></div><h3>"Did we already…?"</h3><p>Questions about the past are answered from the records, with the file and date. Never-discussed means it says so.</p></article>
+      <article class="feat" data-reveal><div class="art a-lock" aria-hidden="true"><span>●</span></div><h3>Nothing private leaks</h3><p>Agent rule files inside <code>code/</code> are local links, hidden from git. An optional guard keeps AI traces out of pushed code.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="scenarios" id="scenarios">
+  <div class="wrap narrow">
+    <p class="eyebrow">Scenarios</p>
+    <h2>Say it, <em>and it's done</em>.</h2>
+    <p class="sub">Each one starts with something you say to your agent.</p>
+    <div class="acc">
+      <details open><summary><span class="ico">🌱</span>Start a brand-new project</summary>
+        <div><p>Run <code>agentbook init</code> in an empty folder, or say:</p><blockquote>Set up an agentbook for this project using github.com/EnigmaticZee/agentbook; follow its PROMPT.md.</blockquote><p>You get one repo with the handbook and an empty <code>code/</code> folder. Nothing goes online until you decide.</p></div></details>
+      <details><summary><span class="ico">📦</span>Add it to a project you already have</summary>
+        <div><p>Same thing, inside the project. It tells you before moving anything: the folder keeps its path, your code moves into <code>code/</code> with its full history and local files, and the agent writes the handbook from the code and its history.</p></div></details>
+      <details><summary><span class="ico">🔒</span>Put it on GitHub, privately</summary>
+        <div><blockquote>Put this project on private GitHub.</blockquote><p>One private repo with the handbook and the code. It can stay like this forever.</p></div></details>
+      <details><summary><span class="ico">🌍</span>Make it public</summary>
+        <div><blockquote>Get this ready to go public.</blockquote><p>It shows exactly what would be published (only the code's own commits), audits it for secrets, personal paths and private files, and goes through each finding with you. Only after your yes does the code get its own public repo. Your notes stay private and keep working.</p></div></details>
+      <details><summary><span class="ico">💻</span>A new computer</summary>
+        <div><p>Clone your private repo and open it in your agent. It fetches anything missing, installs what it can and connects everything before it starts.</p></div></details>
+      <details><summary><span class="ico">🔎</span>Ask about something from before</summary>
+        <div><blockquote>Did we look into SQLite? Why did we drop the plugin idea?</blockquote><p>The agent searches the handbook and every session log and answers with where it came from. Or search it yourself with <code>agentbook find</code>.</p></div></details>
+      <details><summary><span class="ico">🤝</span>Someone else contributes</summary>
+        <div><p>Public projects: nothing to do. Contributors clone only the public code; your handbook and hooks don't exist for them.</p></div></details>
+      <details><summary><span class="ico">🛑</span>A push is blocked</summary>
+        <div><p>Usually nothing to do: the agent updates the handbook or fixes the tests and pushes again. To push anyway, say <q>push without the checks this time</q>.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="install" id="install">
+  <div class="wrap narrow">
+    <p class="eyebrow">Install</p>
+    <h2>Pick a way <em>in</em>.</h2>
+    <div class="inst-tabs" role="tablist" aria-label="Install methods">
+      <button role="tab" aria-selected="true" data-tab="brew">Homebrew</button>
+      <button role="tab" aria-selected="false" data-tab="curl">One line</button>
+      <button role="tab" aria-selected="false" data-tab="go">Go</button>
+      <button role="tab" aria-selected="false" data-tab="none">No install</button>
+    </div>
+    <div class="inst">
+      <div class="pane" data-pane="brew"><pre><code>brew install enigmaticzee/tap/agentbook</code></pre><button class="copy" type="button">Copy</button><p>macOS and Linux. Updates with <code>brew upgrade</code>.</p></div>
+      <div class="pane" data-pane="curl" hidden><pre><code>curl -fsSL https://enigmaticzee.github.io/agentbook/install | sh</code></pre><button class="copy" type="button">Copy</button><p>Downloads the latest release for your computer and checks its checksum. <a href="install">Read the script</a> first if you like.</p></div>
+      <div class="pane" data-pane="go" hidden><pre><code>go install github.com/EnigmaticZee/agentbook/cmd/agentbook@latest</code></pre><button class="copy" type="button">Copy</button><p>Builds from source. Windows works too.</p></div>
+      <div class="pane" data-pane="none" hidden><pre><code>Set up an agentbook for this project using github.com/EnigmaticZee/agentbook; follow its PROMPT.md.</code></pre><button class="copy" type="button">Copy</button><p>Paste this into any coding agent. It fetches the kit and does the rest. The CLI is optional.</p></div>
+    </div>
+    <div class="then">
+      <div><span class="n">then</span><code>agentbook init</code></div>
+      <p>Answer a few questions, open the folder in your agent, and say <q>Read AGENTS.md and finish setting up this agentbook.</q></p>
+    </div>
+    <p class="needs">Needs <b>git</b> and <b>bash</b>. Works with Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Amp, Jules, Zed and anything else that reads <code>AGENTS.md</code>.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-mark"/></svg><span>Agentbook</span></a>
+      <p class="tag-line">Your project, <em>remembered</em>.</p>
+    </div>
+    <div class="credit">
+      <p>Made by <a href="https://github.com/EnigmaticZee">H. Wren</a> <span class="muted">(@EnigmaticZee)</span></p>
+      <p class="muted">Open source under the <a href="https://github.com/EnigmaticZee/agentbook/blob/main/LICENSE">MIT licence</a>. No tracking, no cookies.</p>
+    </div>
+    <div class="links">
+      <a href="https://github.com/EnigmaticZee/agentbook">Source</a>
+      <a href="https://github.com/EnigmaticZee/agentbook/blob/main/PROMPT.md">The prompt</a>
+      <a href="https://github.com/EnigmaticZee/agentbook/issues">Issues</a>
+      <a href="https://github.com/EnigmaticZee/agentbook/releases">Releases</a>
+    </div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mark" viewBox="0 0 32 32">
+    <path d="M4 7.5c4-1.6 8-1.4 12 1v18c-4-2.4-8-2.6-12-1z" fill="var(--violet)"/>
+    <path d="M28 7.5c-4-1.6-8-1.4-12 1v18c4-2.4 8-2.6 12-1z" fill="var(--amber)"/>
+    <circle cx="16" cy="5" r="2.2" fill="var(--ink)"/>
+  </symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+</svg>
+<script src="app.js" defer></script>
+</body>
+</html>

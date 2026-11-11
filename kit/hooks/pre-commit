@@ -1,0 +1,22 @@
+#!/bin/bash
+# Agentbook (single layout): a commit may change the code OR the handbook, never both. Keeping them
+# apart means the code's history can be split out cleanly (kit/go-public.sh) without any handbook
+# content or handbook commit messages coming along.
+
+. "$(dirname "$0")/../lib.sh" 2>/dev/null || exit 0
+hb_locate || exit 0
+[ "$LAYOUT" = single ] || exit 0
+
+staged="$(git diff --cached --name-only)"
+code="$(echo "$staged" | grep -c "^$CODE_DIR/")"
+other="$(echo "$staged" | grep -v "^$CODE_DIR/" | grep -c .)"
+if [ "$code" -gt 0 ] && [ "$other" -gt 0 ]; then
+    echo "" >&2
+    echo "agentbook: commit blocked. It mixes code ($CODE_DIR/) and handbook files." >&2
+    echo "Commit them separately, for example:" >&2
+    echo "  git commit -m \"<what changed in the code>\" -- $CODE_DIR" >&2
+    echo "  git commit -m \"<handbook update>\"" >&2
+    echo "" >&2
+    exit 1
+fi
+exit 0

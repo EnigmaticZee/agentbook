@@ -1,0 +1,31 @@
+#!/bin/bash
+# Agentbook: after every code commit, append it to the workspace's history/commits.md and commit
+# that. Never blocks or fails a commit.
+
+. "$(dirname "$0")/../lib.sh" 2>/dev/null || exit 0
+hb_locate || exit 0
+
+# Skip the many intermediate commits of a rebase.
+GITDIR="$(git rev-parse --git-dir)"
+if [ -d "$GITDIR/rebase-merge" ] || [ -d "$GITDIR/rebase-apply" ]; then exit 0; fi
+
+if [ "$LAYOUT" = single ]; then
+    # Only commits that touched the code are logged (this also stops the log commit logging itself).
+    changes="$(git diff-tree --no-commit-id --name-status -r --root HEAD -- "$CODE_DIR" \
+        | sed "s|	$CODE_DIR/|	|")"
+    [ -n "$changes" ] || exit 0
+else
+    changes="$(git diff-tree --no-commit-id --name-status -r --root HEAD)"
+fi
+
+LOG="$HB/history/commits.md"
+mkdir -p "$HB/history"
+[ -f "$LOG" ] || printf '# Code commit log\n\nAutomatic: one entry per code commit, newest last. The why lives in DECISIONS.md.\n\n' > "$LOG"
+{
+    git log -1 --date=short --format="- %ad \`%h\` ($(git rev-parse --abbrev-ref HEAD)) %s"
+    echo "$changes" | head -30 | sed 's/^/    /'
+} >> "$LOG"
+
+git -C "$HB" add history/commits.md >/dev/null 2>&1
+git -C "$HB" commit -q -m "Log code commit $(git rev-parse --short HEAD)" -- history/commits.md >/dev/null 2>&1
+exit 0

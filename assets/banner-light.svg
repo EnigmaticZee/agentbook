@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-label="Agentbook: your project, remembered. Any coding agent, any computer.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F3FA"/><stop offset="1" stop-color="#E9E8F3"/></linearGradient>
+    <radialGradient id="g1" cx="0.8" cy="0.4" r="0.45"><stop offset="0" stop-color="#F0A030" stop-opacity="0.22"/><stop offset="1" stop-color="#F0A030" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g2" cx="0.1" cy="0.05" r="0.5"><stop offset="0" stop-color="#6B4EF2" stop-opacity="0.18"/><stop offset="1" stop-color="#6B4EF2" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wm" x1="0" x2="1"><stop offset="0" stop-color="#8B6CFF"/><stop offset="1" stop-color="#F2A23A"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0C0F22" flood-opacity="0.22"/></filter>
+  </defs>
+  <rect width="1200" height="380" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="380" rx="28" fill="url(#g1)"/>
+  <rect width="1200" height="380" rx="28" fill="url(#g2)"/>
+  <g transform="translate(64 64)">
+    <path d="M0 9c6-2.4 12-2.1 18 1.5v27c-6-3.6-12-3.9-18-1.5z" fill="#6B4EF2"/>
+    <path d="M36 9c-6-2.4-12-2.1-18 1.5v27c6-3.6 12-3.9 18-1.5z" fill="#F0A030"/>
+    <circle cx="18" cy="4" r="3.2" fill="#14152A"/>
+    <text x="50" y="31" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#14152A" letter-spacing="-0.5">Agentbook</text>
+  </g>
+  <text x="62" y="196" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="74" font-weight="800" fill="#14152A" letter-spacing="-3">Your project,</text>
+  <text x="64" y="272" font-family="'Instrument Serif','Iowan Old Style','Palatino','Georgia',serif" font-size="80" font-style="italic" fill="#14152A">remembered<tspan fill="#14152A" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-weight="800" font-style="normal">.</tspan></text>
+  <path d="M68 292 C 150 278, 240 300, 320 286 S 430 282, 452 290" fill="none" stroke="#F0A030" stroke-width="6" stroke-linecap="round"/>
+  <text x="64" y="336" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" fill="#50566E">Any coding agent. Any computer. Exactly where you left off.</text>
+
+  <g transform="translate(676 58)" filter="url(#sh)">
+    <rect width="462" height="266" rx="18" fill="#12142A"/>
+    <circle cx="24" cy="22" r="6" fill="#FF5F57"/><circle cx="44" cy="22" r="6" fill="#FEBC2E"/><circle cx="64" cy="22" r="6" fill="#28C840"/>
+    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="14">
+      <text x="24" y="66" fill="#5BE0A6">➜ <tspan fill="#9B85FF">lumen</tspan> <tspan fill="#FFFFFF" font-weight="600">agentbook find sqlite</tspan></text>
+      <text x="40" y="98" fill="url(#wm)" font-weight="600">◆ agentbook <tspan fill="#646B8C" font-weight="400">v1.0.0 · Lumen</tspan></text>
+      <text x="40" y="132" fill="#FFFFFF" font-weight="600">“sqlite”<tspan fill="#646B8C" font-weight="400">  3 matches</tspan></text>
+      <text x="40" y="164" fill="#9B85FF">history/sessions/2026-11-04.md</text>
+      <text x="40" y="188" fill="#646B8C">  12 │ <tspan fill="#E8EAF8">### Q: </tspan><tspan fill="#F4AA45" font-weight="600">SQLite</tspan><tspan fill="#E8EAF8"> or Postgres?</tspan></text>
+      <text x="40" y="210" fill="#646B8C">  13 │ <tspan fill="#E8EAF8">**A:** </tspan><tspan fill="#F4AA45" font-weight="600">SQLite</tspan><tspan fill="#E8EAF8">: one file.</tspan></text>
+      <text x="40" y="240" fill="#9B85FF">DECISIONS.md</text>
+    </g>
+  </g>
+  <g font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600">
+    <g transform="translate(700 336)"><rect width="122" height="30" rx="15" fill="#FFFFFF" stroke="#E1E1EC"/><circle cx="18" cy="15" r="4" fill="#D97757"/><text x="30" y="20" fill="#14152A">Claude Code</text></g>
+    <g transform="translate(832 336)"><rect width="80" height="30" rx="15" fill="#FFFFFF" stroke="#E1E1EC"/><circle cx="18" cy="15" r="4" fill="#10A37F"/><text x="30" y="20" fill="#14152A">Codex</text></g>
+    <g transform="translate(922 336)"><rect width="84" height="30" rx="15" fill="#FFFFFF" stroke="#E1E1EC"/><circle cx="18" cy="15" r="4" fill="#14152A"/><text x="30" y="20" fill="#14152A">Cursor</text></g>
+    <g transform="translate(1016 336)"><rect width="114" height="30" rx="15" fill="#FFFFFF" stroke="#E1E1EC"/><circle cx="18" cy="15" r="4" fill="#4C8BF5"/><text x="30" y="20" fill="#14152A">Gemini CLI</text></g>
+  </g>
+</svg>

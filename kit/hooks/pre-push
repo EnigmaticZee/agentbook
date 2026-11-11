@@ -1,0 +1,124 @@
+#!/bin/bash
+# Agentbook: before code is pushed,
+#   0. optional (HIDE_AI_TRACES=yes): block AI tool traces and identities other than GIT_EMAIL,
+#   1. save unsaved handbook edits,
+#   2. block if today's session log is missing,
+#   3. block if the code changed after the handbook docs were last updated,
+#   4. block if the tests fail,
+#   5. split layout: push the workspace too.
+# Pushes with no code changes (handbook only) aren't checked.
+# Bypass only when the owner explicitly says so: AGENTBOOK_BYPASS=1 git push
+
+. "$(dirname "$0")/../lib.sh" 2>/dev/null || exit 0
+hb_locate || exit 0
+
+if [ "${AGENTBOOK_BYPASS:-}" = 1 ]; then
+    echo "agentbook: checks bypassed (AGENTBOOK_BYPASS=1)" >&2
+    exit 0
+fi
+
+# In the single layout only commits that touch the code count as code; paths are shown without the
+# code/ prefix, as they'd appear in the code's own repo.
+if [ "$LAYOUT" = single ]; then SCOPE="$CODE_DIR"; else SCOPE="."; fi
+touches_code() { [ -n "$(git diff-tree --no-commit-id --name-only -r --root "$1" -- "$SCOPE" | head -1)" ]; }
+code_paths() { git diff-tree --no-commit-id --name-only -r --root "$1" -- "$SCOPE" | sed "s|^$CODE_DIR/||"; }
+
+remote="$1"
+oldest=""
+tip=""
+code_commits=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+    case "$local_sha" in *[!0]*) ;; *) continue ;; esac          # branch deletion
+    case "$remote_sha" in
+        *[!0]*) commits="$(git rev-list "$remote_sha..$local_sha" 2>/dev/null)" ;;
+        *)      commits="$(git rev-list "$local_sha" --not --remotes="$remote" 2>/dev/null)" ;;
+    esac
+    [ -n "$tip" ] || tip="$local_sha"
+    for c in $commits; do
+        touches_code "$c" || continue
+        code_commits="$code_commits $c"
+        t="$(git log -1 --format=%ct "$c")"
+        if [ -z "$oldest" ] || [ "$t" -lt "$oldest" ]; then oldest="$t"; fi
+    done
+done
+
+# No code in this push (a tag, or handbook-only changes): nothing to check.
+[ -n "$oldest" ] || exit 0
+
+fail() {
+    echo "" >&2
+    echo "agentbook: push blocked. $1" >&2
+    echo "" >&2
+    exit 1
+}
+
+# 0. Optional guard: pushed code shows only the owner's identity and no AI tool traces.
+if [ "$HIDE_AI_TRACES" = "yes" ]; then
+    tells=""
+    for c in $code_commits; do
+        short="$(git rev-parse --short "$c")"
+        msg="$(git log -1 --format='%B' "$c" | grep -i -E "$HB_CREDIT|$HB_TOOLS" | head -2)"
+        [ -z "$msg" ] || tells="$tells
+  $short message: $msg"
+        if [ -n "${GIT_EMAIL:-}" ]; then
+            for who in "$(git log -1 --format='%ae' "$c")" "$(git log -1 --format='%ce' "$c")"; do
+                [ "$who" = "$GIT_EMAIL" ] || [ "$who" = "noreply@github.com" ] || tells="$tells
+  $short identity: $who (only $GIT_EMAIL may appear)"
+            done
+        fi
+        files="$(code_paths "$c" | grep -E "$HB_TOOL_PATHS_RE" | head -3)"
+        [ -z "$files" ] || tells="$tells
+  $short adds AI tool files: $(echo $files)"
+        added="$(git show --format= --unified=0 "$c" -- "$SCOPE" | grep -E '^\+[^+]' | grep -i -E "$HB_CREDIT|$HB_TOOLS" | head -2 | cut -c1-120)"
+        [ -z "$added" ] || tells="$tells
+  $short content: $added"
+    done
+    if [ -n "$tells" ]; then
+        fail "HIDE_AI_TRACES is on, and these commits contain AI tool traces or another identity:$tells
+
+Remove it (reword the commit with 'git commit --amend', or remove the file/line) and push again.
+If it's legitimate (for example the app genuinely integrates such a service), only the owner can
+approve pushing it: AGENTBOOK_BYPASS=1 git push
+To turn this guard off for good, set HIDE_AI_TRACES=\"no\" in agentbook.conf."
+    fi
+fi
+
+# 1. Save unsaved handbook edits.
+before="$(git -C "$HB" rev-parse HEAD)"
+hb_autocommit "Update handbook (saved automatically before a push)"
+if [ "$LAYOUT" = single ] && [ "$(git -C "$HB" rev-parse HEAD)" != "$before" ]; then
+    fail "Unsaved handbook notes were just committed. Push again to include them."
+fi
+
+# 2. Today's session log.
+today_log="history/sessions/$(date +%F).md"
+if [ ! -s "$HB/$today_log" ]; then
+    fail "There's no session log for today ($today_log in the workspace).
+Write it (questions asked, answers, research, what was tried; format in AGENTS.md), then push again."
+fi
+
+# 3. The handbook must have been updated at or after the code being pushed.
+if [ "$LAYOUT" = single ]; then
+    doc_t="$(git log -1 --format=%ct "$tip" -- . ':(exclude)history' ":(exclude)$CODE_DIR" 2>/dev/null)"
+else
+    doc_t="$(hb_last_doc_update)"
+fi
+if [ "${doc_t:-0}" -lt "$oldest" ]; then
+    fail "The code changed after the handbook was last updated.
+Update STATUS.md (and DECISIONS.md if a decision was made, plus any doc the change affects), commit
+it, then push again."
+fi
+
+# 4. Tests.
+if [ -n "${TEST_CMD:-}" ]; then
+    echo "agentbook: running tests: $TEST_CMD" >&2
+    if ! (cd "$CODE" && eval "$TEST_CMD") </dev/null >&2; then
+        fail "The tests failed. Fix them, or ask the owner before pushing anyway."
+    fi
+fi
+
+# 5. Split layout: the workspace travels with the code.
+if [ "$LAYOUT" = split ] && [ "$(hb_has_remote "$HB")" = yes ]; then
+    hb_push "$HB" || fail "Couldn't push the handbook. Fix that first so both stay in step."
+fi
+exit 0
