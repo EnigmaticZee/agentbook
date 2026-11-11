@@ -67,7 +67,7 @@ func workspace() (*ws.Workspace, bool) {
 	if errors.Is(err, ws.ErrNoWorkspace) {
 		body := ui.Bold.Render("No agentbook workspace here.") + "\n" +
 			ui.Dim.Render("Run this inside a workspace (or its code/ folder), or create one with ") + ui.Code.Render("agentbook init") + ui.Dim.Render(".")
-		fmt.Println("\n" + ui.Card("", body, ui.Amber, ui.Width()))
+		fmt.Println("\n" + ui.Card("", body, ui.Gold, ui.Width()))
 	} else {
 		fmt.Println(ui.Indent + ui.BadStyle.Render(ui.IconBad) + " " + err.Error())
 	}

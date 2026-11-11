@@ -146,7 +146,7 @@ func Run(label string, cmd *exec.Cmd, stream func(*exec.Cmd, chan<- string) erro
 	sp := spinner.New(spinner.WithSpinner(spinner.Spinner{
 		Frames: []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"},
 		FPS:    time.Second / 12,
-	}), spinner.WithStyle(lipgloss.NewStyle().Foreground(Violet)))
+	}), spinner.WithStyle(lipgloss.NewStyle().Foreground(Brand)))
 	m := runModel{label: label, spin: sp, lines: lines, errc: errc, res: res, start: start, width: Width(), first: true, show: show}
 	final, err := tea.NewProgram(m).Run()
 	if err != nil && res.Err == nil {

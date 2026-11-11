@@ -1,42 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-label="Agentbook: your project, remembered. Any coding agent, any computer.">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121633"/><stop offset="1" stop-color="#0B0E20"/></linearGradient>
-    <radialGradient id="g1" cx="0.8" cy="0.4" r="0.45"><stop offset="0" stop-color="#F4AA45" stop-opacity="0.22"/><stop offset="1" stop-color="#F4AA45" stop-opacity="0"/></radialGradient>
-    <radialGradient id="g2" cx="0.1" cy="0.05" r="0.5"><stop offset="0" stop-color="#9B85FF" stop-opacity="0.18"/><stop offset="1" stop-color="#9B85FF" stop-opacity="0"/></radialGradient>
-    <linearGradient id="wm" x1="0" x2="1"><stop offset="0" stop-color="#8B6CFF"/><stop offset="1" stop-color="#F2A23A"/></linearGradient>
-    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0C0F22" flood-opacity="0.22"/></filter>
-  </defs>
-  <rect width="1200" height="380" rx="28" fill="url(#bg)"/>
-  <rect width="1200" height="380" rx="28" fill="url(#g1)"/>
-  <rect width="1200" height="380" rx="28" fill="url(#g2)"/>
-  <g transform="translate(64 64)">
-    <path d="M0 9c6-2.4 12-2.1 18 1.5v27c-6-3.6-12-3.9-18-1.5z" fill="#9B85FF"/>
-    <path d="M36 9c-6-2.4-12-2.1-18 1.5v27c6-3.6 12-3.9 18-1.5z" fill="#F4AA45"/>
-    <circle cx="18" cy="4" r="3.2" fill="#EDEFFA"/>
-    <text x="50" y="31" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#EDEFFA" letter-spacing="-0.5">Agentbook</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-label="Agentbook: every session picks up where the last one left off.">
+  <rect width="1200" height="380" rx="16" fill="#14130F"/>
+  <rect x="0.5" y="0.5" width="1199" height="379" rx="16" fill="none" stroke="#2E2C25"/>
+  <g transform="translate(60 54)">
+    <rect x="1.5" y="1.5" width="25" height="29" rx="3.5" fill="none" stroke="#EEE9DC" stroke-width="2.4"/>
+    <path d="M15 0h8v15l-4-3.2-4 3.2z" fill="#FF7A50"/>
+    <path d="M6.5 19h11M6.5 24h15" stroke="#EEE9DC" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="40" y="23" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="21" font-weight="600" fill="#EEE9DC">agentbook</text>
   </g>
-  <text x="62" y="196" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="74" font-weight="800" fill="#EDEFFA" letter-spacing="-3">Your project,</text>
-  <text x="64" y="272" font-family="'Instrument Serif','Iowan Old Style','Palatino','Georgia',serif" font-size="80" font-style="italic" fill="#EDEFFA">remembered<tspan fill="#EDEFFA" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-weight="800" font-style="normal">.</tspan></text>
-  <path d="M68 292 C 150 278, 240 300, 320 286 S 430 282, 452 290" fill="none" stroke="#F4AA45" stroke-width="6" stroke-linecap="round"/>
-  <text x="64" y="336" font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" fill="#A3A9C6">Any coding agent. Any computer. Exactly where you left off.</text>
-
-  <g transform="translate(676 58)" filter="url(#sh)">
-    <rect width="462" height="266" rx="18" fill="#070914"/>
-    <circle cx="24" cy="22" r="6" fill="#FF5F57"/><circle cx="44" cy="22" r="6" fill="#FEBC2E"/><circle cx="64" cy="22" r="6" fill="#28C840"/>
-    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="14">
-      <text x="24" y="66" fill="#5BE0A6">➜ <tspan fill="#9B85FF">lumen</tspan> <tspan fill="#FFFFFF" font-weight="600">agentbook find sqlite</tspan></text>
-      <text x="40" y="98" fill="url(#wm)" font-weight="600">◆ agentbook <tspan fill="#646B8C" font-weight="400">v1.0.0 · Lumen</tspan></text>
-      <text x="40" y="132" fill="#FFFFFF" font-weight="600">“sqlite”<tspan fill="#646B8C" font-weight="400">  3 matches</tspan></text>
-      <text x="40" y="164" fill="#9B85FF">history/sessions/2026-11-04.md</text>
-      <text x="40" y="188" fill="#646B8C">  12 │ <tspan fill="#E8EAF8">### Q: </tspan><tspan fill="#F4AA45" font-weight="600">SQLite</tspan><tspan fill="#E8EAF8"> or Postgres?</tspan></text>
-      <text x="40" y="210" fill="#646B8C">  13 │ <tspan fill="#E8EAF8">**A:** </tspan><tspan fill="#F4AA45" font-weight="600">SQLite</tspan><tspan fill="#E8EAF8">: one file.</tspan></text>
-      <text x="40" y="240" fill="#9B85FF">DECISIONS.md</text>
+  <rect x="56" y="256" width="196" height="26" fill="#FFD250" fill-opacity="0.32"/>
+  <g font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-weight="600" font-size="52" fill="#EEE9DC" letter-spacing="-1.8">
+    <text x="58" y="158">Every session picks up</text>
+    <text x="58" y="218">where the last one</text>
+    <text x="58" y="278">left off.</text>
+  </g>
+  <text x="60" y="328" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="15" fill="#A39D8C">Any coding agent · any computer · open source</text>
+  <g transform="translate(700 64)">
+    <rect x="20" y="20" width="430" height="268" rx="6" fill="#14130F" stroke="#2E2C25"/>
+    <rect x="10" y="10" width="430" height="268" rx="6" fill="#14130F" stroke="#2E2C25"/>
+    <rect width="430" height="268" rx="6" fill="#1D1C17" stroke="#2E2C25"/>
+    <line x1="0" y1="88" x2="430" y2="88" stroke="#2E2C25"/><line x1="0" y1="118" x2="430" y2="118" stroke="#2E2C25"/><line x1="0" y1="148" x2="430" y2="148" stroke="#2E2C25"/><line x1="0" y1="178" x2="430" y2="178" stroke="#2E2C25"/><line x1="0" y1="208" x2="430" y2="208" stroke="#2E2C25"/><line x1="0" y1="238" x2="430" y2="238" stroke="#2E2C25"/>
+    <text x="20" y="34" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" fill="#A39D8C">history/sessions/2026-11-11.md</text>
+    <line x1="0" y1="52" x2="430" y2="52" stroke="#2E2C25"/>
+    <g font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13">
+      <text x="20" y="80" fill="#EEE9DC" font-weight="600">### Q: Did we already look at SQLite?</text>
+      <text x="20" y="110" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> Yes, on 4 Nov. We chose SQLite: one file,</text>
+      <text x="20" y="140" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14">no server. Postgres was rejected as overkill.</text>
+      <text x="20" y="170" fill="#6CC497" font-size="12">↳ found in 2026-11-04.md and DECISIONS.md</text>
+      <text x="20" y="200" fill="#EEE9DC" font-weight="600">### Q: What's next?</text>
+      <text x="20" y="230" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> CSV export on the reports page.</text>
     </g>
-  </g>
-  <g font-family="'Bricolage Grotesque','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600">
-    <g transform="translate(700 336)"><rect width="122" height="30" rx="15" fill="#171C36" stroke="#262C4D"/><circle cx="18" cy="15" r="4" fill="#D97757"/><text x="30" y="20" fill="#EDEFFA">Claude Code</text></g>
-    <g transform="translate(832 336)"><rect width="80" height="30" rx="15" fill="#171C36" stroke="#262C4D"/><circle cx="18" cy="15" r="4" fill="#10A37F"/><text x="30" y="20" fill="#EDEFFA">Codex</text></g>
-    <g transform="translate(922 336)"><rect width="84" height="30" rx="15" fill="#171C36" stroke="#262C4D"/><circle cx="18" cy="15" r="4" fill="#EDEFFA"/><text x="30" y="20" fill="#EDEFFA">Cursor</text></g>
-    <g transform="translate(1016 336)"><rect width="114" height="30" rx="15" fill="#171C36" stroke="#262C4D"/><circle cx="18" cy="15" r="4" fill="#4C8BF5"/><text x="30" y="20" fill="#EDEFFA">Gemini CLI</text></g>
+    <path d="M370 -6h22v86l-11-9-11 9z" fill="#FF7A50"/>
   </g>
 </svg>

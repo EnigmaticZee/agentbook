@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img src="assets/banner-light.svg" alt="Agentbook: your project, remembered. Any coding agent, any computer, exactly where you left off." width="100%">
+    <img src="assets/banner-light.svg" alt="Agentbook: every session picks up where the last one left off." width="100%">
   </picture>
 </p>
 
@@ -20,9 +20,9 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-6B4EF2"></a>
+  <a href="LICENSE"><img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-E4572E"></a>
   <a href="https://github.com/EnigmaticZee/agentbook/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/EnigmaticZee/agentbook/actions/workflows/test.yml/badge.svg"></a>
-  <img alt="Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI" src="https://img.shields.io/badge/works%20with-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Copilot%20·%20Gemini%20CLI-F0A030">
+  <img alt="Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI" src="https://img.shields.io/badge/works%20with-Claude%20Code%20·%20Codex%20·%20Cursor%20·%20Copilot%20·%20Gemini%20CLI-2F7A50">
 </p>
 
 <br>
@@ -50,10 +50,10 @@ in `AGENTS.md` make your agent read it first and keep it current as it works. Gi
 ## ✦ Install
 
 <table>
-<tr><td><b>Homebrew</b></td><td><code>brew install enigmaticzee/tap/agentbook</code></td></tr>
-<tr><td><b>One line</b></td><td><code>curl -fsSL https://enigmaticzee.github.io/agentbook/install | sh</code></td></tr>
+<tr><td><b>Ask your agent</b></td><td>Paste this into any coding agent:<br><code>Set up an agentbook for this project using github.com/EnigmaticZee/agentbook; follow its PROMPT.md.</code></td></tr>
 <tr><td><b>Go</b></td><td><code>go install github.com/EnigmaticZee/agentbook/cmd/agentbook@latest</code></td></tr>
-<tr><td><b>Nothing</b></td><td>Paste this into any coding agent:<br><code>Set up an agentbook for this project using github.com/EnigmaticZee/agentbook; follow its PROMPT.md.</code></td></tr>
+<tr><td><b>Homebrew</b></td><td><code>brew install enigmaticzee/tap/agentbook</code> <sub>(from the first release)</sub></td></tr>
+<tr><td><b>One line</b></td><td><code>curl -fsSL https://enigmaticzee.github.io/agentbook/install | sh</code> <sub>(from the first release)</sub></td></tr>
 </table>
 
 Then run `agentbook init` in a new or existing project folder, open it in your agent and say

@@ -92,7 +92,7 @@ func firstPara(s string) string {
 func overviewCard(w *ws.Workspace, compact bool) string {
 	width := ui.Width()
 	stage, layout := w.Get("STAGE", "local"), w.Get("LAYOUT", "single")
-	stageColor := map[string]lipgloss.TerminalColor{"local": ui.Muted, "private": ui.Violet, "public": ui.Green}[stage]
+	stageColor := map[string]lipgloss.TerminalColor{"local": ui.Muted, "private": ui.Brand, "public": ui.Green}[stage]
 	if stageColor == nil {
 		stageColor = ui.Muted
 	}
@@ -149,7 +149,7 @@ func overviewCard(w *ws.Workspace, compact bool) string {
 			}
 		}
 	}
-	return ui.Card(w.Name(), b.String(), ui.Violet, width)
+	return ui.Card(w.Name(), b.String(), ui.Brand, width)
 }
 
 func cmdStatus(_ []string) int {
@@ -278,7 +278,7 @@ func cmdInit(args []string) int {
 	if w, err := ws.Find("."); err == nil {
 		body := ui.Bold.Render("This is already an agentbook workspace: "+w.Name()) + "\n" +
 			ui.Dim.Render("To update its scripts, run ") + ui.Code.Render("agentbook upgrade") + ui.Dim.Render(".")
-		fmt.Println("\n" + ui.Card("", body, ui.Amber, ui.Width()))
+		fmt.Println("\n" + ui.Card("", body, ui.Gold, ui.Width()))
 		return 1
 	}
 	if !ui.IsTTY() && len(args) == 0 {
@@ -423,9 +423,14 @@ func cmdInit(args []string) int {
 func cmdDoctor(_ []string) int {
 	var lines []string
 	bad := 0
-	ok := func(s string) { lines = append(lines, ui.OKStyle.Render(ui.IconOK)+" "+ui.Highlight(s, ui.Text.Render)) }
+	ok := func(s string) {
+		lines = append(lines, ui.OKStyle.Render(ui.IconOK)+" "+ui.Highlight(s, ui.Text.Render))
+	}
 	warn := func(s string) { lines = append(lines, ui.Warm.Render(ui.IconWarn)+" "+ui.Highlight(s, ui.Text.Render)) }
-	fail := func(s string) { bad++; lines = append(lines, ui.BadStyle.Render(ui.IconBad)+" "+ui.Highlight(s, ui.Bold.Render)) }
+	fail := func(s string) {
+		bad++
+		lines = append(lines, ui.BadStyle.Render(ui.IconBad)+" "+ui.Highlight(s, ui.Bold.Render))
+	}
 	head := func(s string) { lines = append(lines, "", ui.Warm.Render(strings.ToUpper(s))) }
 
 	head("This computer")

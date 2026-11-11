@@ -7,35 +7,35 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lucasb-eyer/go-colorful"
 	"golang.org/x/term"
 )
 
-// Palette. Each colour has a light-terminal and a dark-terminal value with enough contrast on both.
+// Palette: ink on paper with a bookmark-ribbon accent. Each colour has a light-terminal and a
+// dark-terminal value with enough contrast on both.
 var (
-	Ink    = lipgloss.AdaptiveColor{Light: "#131528", Dark: "#EDEFFA"}
-	Muted  = lipgloss.AdaptiveColor{Light: "#4F556C", Dark: "#A1A7C4"}
-	Faint  = lipgloss.AdaptiveColor{Light: "#8A90A6", Dark: "#646B8C"}
-	Line   = lipgloss.AdaptiveColor{Light: "#D3D6E2", Dark: "#2E3456"}
-	Violet = lipgloss.AdaptiveColor{Light: "#6A47F0", Dark: "#9B85FF"}
-	Amber  = lipgloss.AdaptiveColor{Light: "#B26A00", Dark: "#F4AA45"}
-	Green  = lipgloss.AdaptiveColor{Light: "#0F7A55", Dark: "#5BE0A6"}
-	Red    = lipgloss.AdaptiveColor{Light: "#C02848", Dark: "#FF7D90"}
-	Chip   = lipgloss.AdaptiveColor{Light: "#ECE8FF", Dark: "#262046"}
+	Ink   = lipgloss.AdaptiveColor{Light: "#1C1B17", Dark: "#EEE9DC"}
+	Muted = lipgloss.AdaptiveColor{Light: "#5F5B50", Dark: "#B5AE9C"}
+	Faint = lipgloss.AdaptiveColor{Light: "#8E887A", Dark: "#7A7466"}
+	Line  = lipgloss.AdaptiveColor{Light: "#D2CAB5", Dark: "#403D33"}
+	Brand = lipgloss.AdaptiveColor{Light: "#C2410C", Dark: "#FF8A5C"}
+	Gold  = lipgloss.AdaptiveColor{Light: "#8A6200", Dark: "#F2C14E"}
+	Green = lipgloss.AdaptiveColor{Light: "#2F7A50", Dark: "#6CC497"}
+	Red   = lipgloss.AdaptiveColor{Light: "#B42318", Dark: "#FF7A7A"}
+	Chip  = lipgloss.AdaptiveColor{Light: "#EFE9DA", Dark: "#2C2A22"}
 )
 
 var (
-	Bold      = lipgloss.NewStyle().Bold(true).Foreground(Ink)
-	Text      = lipgloss.NewStyle().Foreground(Ink)
-	Dim       = lipgloss.NewStyle().Foreground(Muted)
-	Fainter   = lipgloss.NewStyle().Foreground(Faint)
-	Accent    = lipgloss.NewStyle().Foreground(Violet).Bold(true)
-	Warm      = lipgloss.NewStyle().Foreground(Amber).Bold(true)
-	OKStyle   = lipgloss.NewStyle().Foreground(Green).Bold(true)
-	BadStyle  = lipgloss.NewStyle().Foreground(Red).Bold(true)
-	Code      = lipgloss.NewStyle().Foreground(Violet)
-	Italic    = lipgloss.NewStyle().Foreground(Muted).Italic(true)
-	Indent    = "  "
+	Bold     = lipgloss.NewStyle().Bold(true).Foreground(Ink)
+	Text     = lipgloss.NewStyle().Foreground(Ink)
+	Dim      = lipgloss.NewStyle().Foreground(Muted)
+	Fainter  = lipgloss.NewStyle().Foreground(Faint)
+	Accent   = lipgloss.NewStyle().Foreground(Brand).Bold(true)
+	Warm     = lipgloss.NewStyle().Foreground(Gold).Bold(true)
+	OKStyle  = lipgloss.NewStyle().Foreground(Green).Bold(true)
+	BadStyle = lipgloss.NewStyle().Foreground(Red).Bold(true)
+	Code     = lipgloss.NewStyle().Foreground(Brand)
+	Italic   = lipgloss.NewStyle().Foreground(Muted).Italic(true)
+	Indent   = "  "
 )
 
 // Icons used everywhere, so output reads the same in every command.
@@ -44,7 +44,6 @@ const (
 	IconBad  = "✗"
 	IconSkip = "·"
 	IconWarn = "!"
-	IconMark = "◆"
 	IconNext = "→"
 )
 
@@ -63,29 +62,10 @@ func Width() int {
 // IsTTY reports whether stdout is an interactive terminal.
 func IsTTY() bool { return term.IsTerminal(int(os.Stdout.Fd())) && term.IsTerminal(int(os.Stdin.Fd())) }
 
-// Gradient colours each rune of s from violet to amber (the brand blend).
-func Gradient(s string) string {
-	from, _ := colorful.Hex("#8B6CFF")
-	to, _ := colorful.Hex("#F2A23A")
-	if !lipgloss.HasDarkBackground() {
-		from, _ = colorful.Hex("#5B36E8")
-		to, _ = colorful.Hex("#B8650A")
-	}
-	runes := []rune(s)
-	var b strings.Builder
-	for i, r := range runes {
-		t := 0.0
-		if len(runes) > 1 {
-			t = float64(i) / float64(len(runes)-1)
-		}
-		c := from.BlendLuv(to, t).Clamped().Hex()
-		b.WriteString(lipgloss.NewStyle().Foreground(lipgloss.Color(c)).Bold(true).Render(string(r)))
-	}
-	return b.String()
+// Wordmark is the product name as drawn in headers: a ribbon mark and the name.
+func Wordmark() string {
+	return lipgloss.NewStyle().Foreground(Brand).Bold(true).Render("▍") + Bold.Render("agentbook")
 }
-
-// Wordmark is the product name as drawn in headers.
-func Wordmark() string { return Gradient(IconMark+" agentbook") }
 
 // Pill draws a small rounded-looking label.
 func Pill(s string, fg lipgloss.TerminalColor) string {

@@ -33,6 +33,29 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
+  // ---- Contents: mark the chapter being read ----
+  var tocLinks = document.querySelectorAll(".toc a");
+  if ("IntersectionObserver" in window && tocLinks.length) {
+    var byId = {};
+    tocLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var tocIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        tocLinks.forEach(function (a) { a.classList.remove("on"); });
+        var a = byId[e.target.id];
+        if (a) a.classList.add("on");
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    document.querySelectorAll(".chapter").forEach(function (c) { tocIO.observe(c); });
+    // The last chapter is short: mark it once the page is scrolled to the end.
+    window.addEventListener("scroll", function () {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        tocLinks.forEach(function (a) { a.classList.remove("on"); });
+        tocLinks[tocLinks.length - 1].classList.add("on");
+      }
+    }, { passive: true });
+  }
+
   // ---- Tabs (install) ----
   function tabs(list, attr, onChange) {
     var buttons = list.querySelectorAll("button");
@@ -77,7 +100,7 @@
   // The output mirrors what the real CLI prints.
   function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function s(cls, text) { return '<span class="' + cls + '">' + esc(text) + "</span>"; }
-  var HEAD = "  " + s("grad", "◆ agentbook") + " " + s("f", "v1.0.0") + s("f", "  ·  ") + s("d", "Lumen") + "\n";
+  var HEAD = "  " + s("mk", "▍") + s("b", "agentbook") + " " + s("f", "v1.0.0") + s("f", "  ·  ") + s("d", "Lumen") + "\n";
   function box(lines, color, title) {
     var w = 66, top;
     if (title) top = s(color, "╭─ ") + s(color + " b", title) + s(color, " " + "─".repeat(w - title.length - 3) + "╮");
@@ -140,7 +163,7 @@
     ],
     init: [
       ["type", "agentbook init"], ["wait", 300],
-      ["out", "\n  " + s("grad", "◆ agentbook") + " " + s("f", "v1.0.0") + s("f", "  ·  ") + s("d", "new workspace") + "\n\n"],
+      ["out", "\n  " + s("mk", "▍") + s("b", "agentbook") + " " + s("f", "v1.0.0") + s("f", "  ·  ") + s("d", "new workspace") + "\n\n"],
       ["out", s("v", "┃ ") + s("b", "Project name") + "\n" + s("v", "┃ ") + s("d", "Shown in the handbook and the agent rules.") + "\n" + s("v", "┃ ") + s("v", "> ") + "Lumen\n\n"],
       ["wait", 500],
       ["out", s("v", "┃ ") + s("b", "Which agents do you use?") + "\n" + s("v", "┃ ") + s("g", "◉ ") + "Claude Code  (CLAUDE.md)\n" + s("v", "┃ ") + s("g", "◉ ") + "Gemini CLI  (GEMINI.md)\n\n"],

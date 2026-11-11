@@ -158,7 +158,7 @@ func (m findModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m findModel) View() string {
 	var b strings.Builder
 	b.WriteString("\n" + m.header + "\n\n")
-	b.WriteString(Card("", m.input.View(), Violet, m.width) + "\n\n")
+	b.WriteString(Card("", m.input.View(), Brand, m.width) + "\n\n")
 	q := strings.TrimSpace(m.input.Value())
 	switch {
 	case q == "":
