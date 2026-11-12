@@ -128,7 +128,7 @@
     s("hl", " private ") + " " + s("hl", " single layout ") + "  " + s("d", "updated today"),
     "",
     s("a", "NEXT STEP"),
-    s("b", "Add CSV export to the reports page (see 2026-11-10 log)."),
+    s("b", "Add a sign-up page to the website (see 2026-11-10 log)."),
     "",
     s("b", "14") + s("d", " decisions") + s("f", "  ·  ") + s("b", "9") + s("d", " sessions") + s("f", "  ·  ") + s("b", "61") + s("d", " questions"),
   ], "v", "Lumen");
@@ -139,13 +139,13 @@
       ["out", "\n" + HEAD + "\n" + card + "\n"], ["menu", 0], ["wait", 900], ["menu", 1], ["wait", 700], ["menu", 2], ["wait", 700], ["menu", 1], ["wait", 1800],
     ],
     find: [
-      ["type", "agentbook find sqlite"], ["wait", 300],
-      ["out", "\n" + HEAD + "\n  " + s("b", "“sqlite”") + s("f", "  3 matches") + "\n\n"],
-      ["out", "  " + s("v", "history/sessions/2026-11-04.md") + "\n"],
-      ["out", s("f", "     12 ") + s("f", "│ ") + "### Q: Should we use " + s("a", "SQLite") + " or Postgres?\n"],
-      ["out", s("f", "     13 ") + s("f", "│ ") + "**A:** " + s("a", "SQLite") + ": one file, no server, fine for one user.\n"],
+      ["type", "agentbook find phone"], ["wait", 300],
+      ["out", "\n" + HEAD + "\n  " + s("b", "“phone”") + s("f", "  3 matches") + "\n\n"],
+      ["out", "  " + s("v", "history/sessions/2026-11-02.md") + "\n"],
+      ["out", s("f", "     12 ") + s("f", "│ ") + "### Q: Should we build a website or a " + s("a", "phone") + " app first?\n"],
+      ["out", s("f", "     13 ") + s("f", "│ ") + "**A:** A website first. The " + s("a", "phone") + " app can wait.\n"],
       ["out", "  " + s("v", "DECISIONS.md") + "\n"],
-      ["out", s("f", "     41 ") + s("f", "│ ") + "## 2026-11-04: Store reports in " + s("a", "SQLite") + "\n\n"],
+      ["out", s("f", "     41 ") + s("f", "│ ") + "## 2026-11-02: Website first, " + s("a", "phone") + " app later\n\n"],
       ["wait", 2600],
     ],
     check: [

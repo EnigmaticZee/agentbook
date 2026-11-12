@@ -69,13 +69,13 @@
       <figcaption><span class="path">history/sessions/2026-11-11.md</span><span class="tag">today</span></figcaption>
       <div class="sheet-body" id="sheet">
         <p class="h">## Questions and answers</p>
-        <p class="q">### Q: Did we already look at SQLite?</p>
-        <p class="a"><b>A:</b> Yes, on 4 Nov. We chose SQLite: one file, no server, fine for one user. Postgres was rejected as overkill.</p>
-        <p class="src">↳ found in <u>2026-11-04.md</u> and <u>DECISIONS.md</u></p>
+        <p class="q">### Q: Did we already talk about a phone app?</p>
+        <p class="a"><b>A:</b> Yes, on 2 Nov. We chose a website first: one version that works on every device. The phone app was left for later.</p>
+        <p class="src">↳ found in <u>2026-11-02.md</u> and <u>DECISIONS.md</u></p>
         <p class="q">### Q: What's next?</p>
-        <p class="a"><b>A:</b> CSV export on the reports page. It's the next step in <u>STATUS.md</u>.</p>
+        <p class="a"><b>A:</b> A sign-up page for the website. It's the next step in <u>STATUS.md</u>.</p>
       </div>
-      <div class="stamp" aria-hidden="true">resumed<br><b>on a new laptop</b></div>
+      <div class="stamp" aria-hidden="true">resumed<br><b>on another computer</b></div>
     </figure>
   </div>
 </section>
@@ -105,8 +105,8 @@
         <header><span class="when">Monday</span><span class="where"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-laptop"/></svg>Laptop</span></header>
         <p class="who"><span class="dot" style="--c:#D97757"></span>Claude Code</p>
         <div class="chat">
-          <p class="you">Should we use SQLite or Postgres?</p>
-          <p class="bot">SQLite: one file, no server. Postgres is overkill for one user.</p>
+          <p class="you">Should we build a website or a phone app first?</p>
+          <p class="bot">A website first: one version that works on every device. The app can wait.</p>
           <p class="you">Agreed. Wrap up.</p>
         </div>
         <p class="foot">✓ Decision and answer written down</p>
@@ -117,8 +117,8 @@
       <article class="book">
         <header><svg viewBox="0 0 28 32" aria-hidden="true"><use href="#mark"/></svg>The handbook</header>
         <ul>
-          <li><b>Decisions</b><span>+ SQLite, not Postgres</span></li>
-          <li><b>Next step</b><span>CSV export on reports</span></li>
+          <li><b>Decisions</b><span>+ Website first, phone app later</span></li>
+          <li><b>Next step</b><span>Add a sign-up page</span></li>
           <li><b>Session log</b><span>Monday's questions and answers</span></li>
         </ul>
         <p class="foot">Saved with the code, in your private repo</p>
@@ -131,7 +131,7 @@
         <p class="who"><span class="dot" style="--c:#10A37F"></span>Codex</p>
         <div class="chat">
           <p class="you">Did we look at databases?</p>
-          <p class="bot">Yes, on Monday: SQLite. Next up is CSV export. Shall I start?</p>
+          <p class="bot">Yes, on Monday: website first, phone app later. Next up is the sign-up page. Shall I start?</p>
         </div>
         <p class="foot">✓ Picked up exactly where Monday ended</p>
       </article>
@@ -212,12 +212,12 @@
         <p>If the notes weren't updated, today's log is missing, or tests fail, the push waits and says why.</p>
       </article>
       <article class="card" data-reveal>
-        <div class="mini"><p><span class="tag-d">Nov 11</span> Add CSV export</p><p><span class="tag-d">Nov 10</span> Fix report totals</p><p><span class="tag-d">Nov 04</span> Switch to SQLite</p></div>
+        <div class="mini"><p><span class="tag-d">Nov 10</span> Fix menu on phones</p><p><span class="tag-d">Nov 05</span> Add the home page</p><p><span class="tag-d">Nov 02</span> Start the website</p></div>
         <h3>Every change is written down</h3>
         <p>Each code change is added to the handbook's log, next to the reasons in the decisions.</p>
       </article>
       <article class="card" data-reveal>
-        <div class="mini"><p class="you-q">“Did we look at SQLite?”</p><p class="dim">Yes, on Nov 4.</p><p class="src-q">↳ from 2026-11-04.md</p></div>
+        <div class="mini"><p class="you-q">“Did we talk about a phone app?”</p><p class="dim">Yes, on Nov 2.</p><p class="src-q">↳ from 2026-11-02.md</p></div>
         <h3>Questions about the past get real answers</h3>
         <p>Answers come from the records, with where they came from. If something was never discussed, it says so.</p>
       </article>
@@ -246,7 +246,7 @@
       <details><summary>Continue on another computer</summary>
         <div><p>Copy (clone) your private repo and open it in your agent. It sets everything up before it starts.</p></div></details>
       <details><summary>Ask about something from before</summary>
-        <div><blockquote>Did we look into SQLite? Why did we drop the plugin idea?</blockquote><p>The agent looks it up in the handbook and tells you where the answer came from. Or search yourself with <code>agentbook find</code>.</p></div></details>
+        <div><blockquote>Did we talk about a phone app? Why did we drop the newsletter idea?</blockquote><p>The agent looks it up in the handbook and tells you where the answer came from. Or search yourself with <code>agentbook find</code>.</p></div></details>
       <details><summary>A push is stopped</summary>
         <div><p>Usually nothing to do: the agent updates the notes or fixes the tests and tries again. To push anyway, say <q>push without the checks this time</q>.</p></div></details>
     </div>

@@ -22,12 +22,12 @@
     <text x="20" y="34" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" fill="#A39D8C">history/sessions/2026-11-11.md</text>
     <line x1="0" y1="52" x2="430" y2="52" stroke="#2E2C25"/>
     <g font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13">
-      <text x="20" y="80" fill="#EEE9DC" font-weight="600">### Q: Did we already look at SQLite?</text>
-      <text x="20" y="110" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> Yes, on 4 Nov. We chose SQLite: one file,</text>
-      <text x="20" y="140" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14">no server. Postgres was rejected as overkill.</text>
-      <text x="20" y="170" fill="#6CC497" font-size="12">↳ found in 2026-11-04.md and DECISIONS.md</text>
+      <text x="20" y="80" fill="#EEE9DC" font-weight="600">### Q: Did we talk about a phone app?</text>
+      <text x="20" y="110" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> Yes, on 2 Nov. We chose a website first:</text>
+      <text x="20" y="140" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14">it works on every device. The app can wait.</text>
+      <text x="20" y="170" fill="#6CC497" font-size="12">↳ found in 2026-11-02.md and DECISIONS.md</text>
       <text x="20" y="200" fill="#EEE9DC" font-weight="600">### Q: What's next?</text>
-      <text x="20" y="230" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> CSV export on the reports page.</text>
+      <text x="20" y="230" fill="#D6D0C0" font-family="'IBM Plex Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14"><tspan fill="#FF8E68" font-family="'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-weight="600">A:</tspan> A sign-up page for the website.</text>
     </g>
     <path d="M370 -6h22v86l-11-9-11 9z" fill="#FF7A50"/>
   </g>
